@@ -1,15 +1,24 @@
 import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import "./App.css";
+import { Layout } from "./components/Layout";
 import CounterPage from "./pages/CounterPage";
 import TaskPage from "./pages/TaskPage";
 import UserPage from "./pages/UserPage";
 
 function App() {
   return (
-    <div className="App">
-      <UserPage />
-    </div>
+    <BrowserRouter>
+      <Layout>
+        <Routes>
+          <Route>
+            <Route path="/" element={<CounterPage />} />
+            <Route path="/tasks" element={<TaskPage />} />
+            <Route path="/users" element={<UserPage />} />
+          </Route>
+        </Routes>
+      </Layout>
+    </BrowserRouter>
   );
 }
 
