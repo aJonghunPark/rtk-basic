@@ -19,7 +19,8 @@ interface Props {
 }
 
 const pages = [
-  { key: "counter", value: "/" },
+  { key: "login", value: "/" },
+  { key: "counter", value: "/couter" },
   { key: "tasks", value: "/tasks" },
   { key: "users", value: "/users" },
 ];

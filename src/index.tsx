@@ -1,5 +1,6 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
+import { Helmet, HelmetProvider } from "react-helmet-async";
 import { Provider } from "react-redux";
 
 import App from "./App";
@@ -13,6 +14,14 @@ const root = createRoot(container);
 root.render(
   <React.StrictMode>
     <Provider store={store}>
+      <HelmetProvider>
+        <Helmet>
+          <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+          />
+        </Helmet>
+      </HelmetProvider>
       <App />
     </Provider>
   </React.StrictMode>

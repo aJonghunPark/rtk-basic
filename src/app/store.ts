@@ -1,6 +1,7 @@
 import { Action, ThunkAction, configureStore } from "@reduxjs/toolkit";
 
 import counterReducer from "../features/counter/counterSlice";
+import loginReducer from "../features/login/loginSlice";
 import taskReducer from "../features/task/taskSlice";
 import userReducer from "../features/user/userSlice";
 
@@ -9,6 +10,7 @@ export const store = configureStore({
     counter: counterReducer,
     task: taskReducer,
     user: userReducer,
+    login: loginReducer,
   },
 });
 
