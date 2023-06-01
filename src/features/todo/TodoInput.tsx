@@ -15,7 +15,6 @@ const TodoInput = () => {
   const editedTodo = useAppSelector(selectEditedTodo);
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    console.log(editedTodo);
     editedTodo.id === 0
       ? dispatch(editTodo({ id: 0, title: e.target.value }))
       : dispatch(editTodo({ id: editedTodo.id, title: e.target.value }));
