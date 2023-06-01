@@ -97,32 +97,20 @@ const todoSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addCase(fetchAsyncGet.fulfilled, (state, action) => {
-      return {
-        ...state,
-        todos: action.payload,
-      };
+      state.todos = action.payload;
     });
     builder.addCase(fetchAsyncCreate.fulfilled, (state, action) => {
-      return {
-        ...state,
-        todos: [action.payload, ...state.todos],
-      };
+      state.todos = [action.payload, ...state.todos];
     });
     builder.addCase(fetchAsyncUpdate.fulfilled, (state, action) => {
-      return {
-        ...state,
-        todos: state.todos.map((todo) =>
-          todo.id === action.payload.id ? action.payload : todo
-        ),
-        selectedTodo: action.payload,
-      };
+      state.todos = state.todos.map((todo) =>
+        todo.id === action.payload.id ? action.payload : todo
+      );
+      state.selectedTodo = action.payload;
     });
     builder.addCase(fetchAsyncDelete.fulfilled, (state, action) => {
-      return {
-        ...state,
-        todos: state.todos.filter((todo) => todo.id !== action.payload),
-        selectedTodo: initialState.selectedTodo,
-      };
+      state.todos = state.todos.filter((todo) => todo.id !== action.payload);
+      state.selectedTodo = initialState.selectedTodo;
     });
   },
 });
