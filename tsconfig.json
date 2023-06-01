@@ -17,5 +17,5 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": ["src", "vite.config.ts", "jest.config.js", "svgTransform.js"]
+  "include": ["src", "vite.config.ts", "jest.config.js", "fileTransformer.js"]
 }
