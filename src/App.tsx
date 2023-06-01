@@ -5,6 +5,7 @@ import { Layout } from "./components/Layout";
 import CounterPage from "./pages/CounterPage";
 import LoginPage from "./pages/LoginPage";
 import TaskPage from "./pages/TaskPage";
+import TodoPage from "./pages/TodoPage";
 import UserPage from "./pages/UserPage";
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
             <Route path="/couter" element={<CounterPage />} />
             <Route path="/tasks" element={<TaskPage />} />
             <Route path="/users" element={<UserPage />} />
+            <Route path="/todos" element={<TodoPage />} />
           </Route>
         </Routes>
       </Layout>

@@ -80,7 +80,7 @@ const loginSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(fetchAsyncLogin.fulfilled, (state, action) => {
       localStorage.setItem("localJWT", action.payload.access);
-      action.payload.access && (window.location.href = "/tasks");
+      action.payload.access && (window.location.href = "/todos");
     });
     builder.addCase(fetchAsyncProf.fulfilled, (state, action) => {
       state.profile = action.payload;

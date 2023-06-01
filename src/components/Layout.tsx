@@ -23,6 +23,7 @@ const pages = [
   { key: "counter", value: "/couter" },
   { key: "tasks", value: "/tasks" },
   { key: "users", value: "/users" },
+  { key: "todos", value: "/todos" },
 ];
 
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
