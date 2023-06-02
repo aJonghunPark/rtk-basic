@@ -1,46 +1,105 @@
-# Getting Started with Create React App
+# [Redux編] Redux Tool KitとReact HooksによるモダンReact フロントエンド開発
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) TS template.
+https://www.udemy.com/share/103iJY3@s1lproZCQibfyj9RHvl2CECHzdvsXNkyS6BTchelhQJe_2K8QTRP1vZYGBxWsgYVvA==/
 
-## Available Scripts
+Kazu T+さんの講座でRTKとDjango REST FrameworkでTodoアプリを作ります。
+講座のサンプルは3年前に作られたので、相当バージョンが古いしJavaScriptで作られています。
+このサンプルはライブラリのバージョンを全部最新バージョン（2023/06/01基準）に上げました。
+またTypeScriptで作って、いろんなところをリファクタリングしました。
+講座では二つのプロジェクトで行っていますが、一つにまとめてReact Routerで分岐する形を取りました。
+レイアウトを含めてUIはMUIを使っています。
 
-In the project directory, you can run:
+このリポジトリはフロントエンド側です。
+バックエンドは[ここ](https://github.com/aJonghunPark/django_todoapi)をご参照ください。
 
-### `npm start`
+## nodeの環境構築
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+私はnvmでnodeのバージョン管理を行っていますが、nodenvなど他のものを使っても構いません。
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+```sh
+brew install nvm
+```
 
-### `npm test`
+nvmで最新バージョンのnodeをインストールします。
+nvm ls-remote --ltsでインストールできるnodeのリストが表示されます。
+私は現時点の最新である18.15.0をインストールしました。
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```sh
+# インストールできるnodeのリストを確認
+nvm ls-remote --lts
 
-### `npm run build`
+# nodeをインストールする。
+nvm install 18.15.0
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# インストールしたnodeのバージョンを確認
+nvm ls
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# インストールしたnodeのバージョンを指定
+nvm use 18.15.0
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# インストールしたnodeのバージョンをデフォルトで設定
+nvm alias default v18.15.0
+```
 
-### `npm run eject`
+## プロジェクトの生成
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```sh
+create-react-app react-query-todos --template redux-typescript
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Reactのプロジェクトの場合は色々と下準備が必要です。
+[この文書](https://github.com/aJonghunPark/rtk-saga-crud/blob/main/doc/02.install.md)をご参照ください。
+上記の文書からRedux-Sagaはインストールする必要がありません。
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+※ プロジェクトの生成はcreate-react-appでしたが、途中でviteでマイグレーションしました。
+viteへのマイグレーション手順は[ここ]()をご参照ください。
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Built With
 
-## Learn More
+* [TypeScript](https://github.com/microsoft/TypeScript)
+* [React](https://github.com/facebook/react)
+* [Router Dom](https://github.com/remix-run/react-router)
+* [Redux Toolkit](https://github.com/reduxjs/redux-toolkit)
+* [material ui](https://github.com/mui/material-ui)
+* [Vite](https://github.com/vitejs/vite)
+* [Jest](https://github.com/jestjs/jest)
+* [esbuild-jest](https://github.com/aelbore/esbuild-jest)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Getting Started
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+下準備が終わったら、yarn startでクライアントを立ち上げます。
+apiサーバーのURLなどは環境毎に異なるため、gitではなく各サーバーの環境変数で管理するのが一般的です。
+yarn startする前に.env.localファイルを作成します。
+
+```sh
+vim .env.local
+
+REACT_APP_REST_URL=http://127.0.0.1:8000/
+
+:wq
+
+yarn start
+```
+
+この場合、バックエンド側のサーバーも立ち上げないといけません。
+バックエンド側のサーバーは[ここ](https://github.com/aJonghunPark/django_todoapi)をご確認ください。
+
+* counterのサンプル画面
+
+![サンプル01](./doc/react-counter.png)
+
+* tasksのサンプル画面
+
+![サンプル02](./doc/react-tasks.png)
+
+* usersのサンプル画面
+
+![サンプル03](./doc/react-users.png)
+
+* loginのサンプル画面
+
+![サンプル04](./doc/react-login.png)
+
+* Todoアプリのサンプル画面
+
+![サンプル05](./doc/react-todos.png)
